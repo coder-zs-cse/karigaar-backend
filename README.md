@@ -147,7 +147,7 @@ karigaar-backend/
 ## Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/karigaar-backend.git
+git clone https://github.com/coder-zs-cse/karigaar-backend.git
 cd karigaar-backend
 
 python -m venv venv
