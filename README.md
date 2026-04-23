@@ -4,6 +4,9 @@
 
 > Voice AI marketplace connecting customers to skilled workers in Hyderabad — powered by Bolna AI voice agents.
 
+> No App, No Website, Just Call
+
+
 **🌐 Landing Site:** [github.com/coder-zs-cse/karigaar-landing](https://github.com/coder-zs-cse/karigaar-landing)
 
 ---
