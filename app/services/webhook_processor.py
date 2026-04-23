@@ -243,7 +243,7 @@ def _reinsert_log(
 #   job_completion_confirmed (yes/no/not_applicable), additional_notes
 # ─────────────────────────────────────────────────────────────────────────────
 
-VALID_WORKER_TYPES = {"electrician", "plumber", "painter", "mason", "locksmith"}
+# VALID_WORKER_TYPES = {"electrician", "plumber", "painter", "mason", "locksmith"}
 
 
 async def _handle_worker_inbound(log: CallLog, caller_phone: str, db: Session) -> None:
@@ -253,7 +253,11 @@ async def _handle_worker_inbound(log: CallLog, caller_phone: str, db: Session) -
     scenario = _extract(data, "scenario_completed")
     logger.info("Worker inbound scenario_completed=%s", scenario)
 
-    if scenario == "new_worker_registered":
+    if scenario == "new_worker_registered" :
+        _register_worker(data, caller_phone, db)
+        return
+
+    if scenario == "update_details_request" :
         _register_worker(data, caller_phone, db)
         return
 
@@ -278,9 +282,6 @@ def _register_worker(data: dict, caller_phone: str, db: Session) -> None:
     locality = _extract(data, "locality")
     exp_raw = _extract(data, "experience_years")
 
-    # Sanitize worker_type: must be in valid enum; else drop
-    if worker_type not in VALID_WORKER_TYPES:
-        worker_type = None
 
     # Parse experience_years as int; default 0
     experience = 0
@@ -444,12 +445,6 @@ def _register_new_job(data: dict, caller_phone: str, db: Session) -> None:
     service_type = _extract(data, "service_type")
     description = _extract(data, "job_description")
 
-    if service_type not in VALID_WORKER_TYPES:
-        logger.warning(
-            "Customer %s provided invalid service_type '%s' — skipping job creation",
-            caller_phone, service_type,
-        )
-        return
 
     customer = db.query(Customer).filter(Customer.phone_number == caller_phone).first()
     if customer:
