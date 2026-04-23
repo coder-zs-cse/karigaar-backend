@@ -9,10 +9,10 @@ def _utcnow() -> datetime:
     return datetime.now(timezone.utc)
 
 
-WorkerTypeEnum = Enum(
-    "electrician", "plumber", "painter", "mason", "locksmith",
-    name="worker_type_enum",
-)
+# WorkerTypeEnum = Enum(
+#     "electrician", "plumber", "painter", "mason", "locksmith",
+#     name="worker_type_enum",
+# )
 
 WorkerAvailabilityEnum = Enum(
     "available", "paired", "unavailable",
@@ -26,7 +26,7 @@ class Worker(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     phone_number = Column(String(20), unique=True, nullable=False, index=True)
     name = Column(String(100))
-    worker_type = Column(WorkerTypeEnum)
+    worker_type = Column(String(100))
     locality = Column(String(100))
     experience_years = Column(Integer, default=0)
     availability = Column(WorkerAvailabilityEnum, default="available", nullable=False)

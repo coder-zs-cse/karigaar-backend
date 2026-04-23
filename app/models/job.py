@@ -36,11 +36,7 @@ class Job(Base):
     # Workers who already declined this job — so we don't call them again
     declined_worker_ids = Column(JSONB, default=list)
 
-    service_type = Column(
-        Enum("electrician", "plumber", "painter", "mason", "locksmith",
-             name="service_type_enum"),
-        nullable=False,
-    )
+    service_type = Column(String(100))
     job_description = Column(Text)
     locality = Column(String(100))
     job_status = Column(JobStatusEnum, default="searching_worker", nullable=False)
