@@ -12,6 +12,8 @@
 
 Karigaar is a phone-first marketplace where blue-collar workers (electricians, plumbers, painters, and 17 more trades) register by calling one number, customers post jobs by calling another, and the system automatically matches, pairs, and collects feedback — all through natural Hinglish voice conversations. No app download. No smartphone required.
 
+<img width="2156" height="3062" alt="urbancall_system_sequence_diagram" src="https://github.com/user-attachments/assets/b201bf73-e613-40ea-b4a7-170b48c27eb6" />
+
 **How it works:** A customer in Madhapur calls and says "mujhe electrician chahiye, fan nahi chal raha." Within minutes, Karigaar finds a nearby electrician, calls them to offer the job, and once accepted, calls the customer back with the worker's number. After the job is done, Karigaar calls the customer again to collect detailed feedback on punctuality, behavior, and quality.
 
 Zero human intervention. Fully automated. Two phone numbers. Five AI agents.
